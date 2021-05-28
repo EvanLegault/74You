@@ -9,15 +9,19 @@ class AgencyController extends Controller
 {
     public function index()
     {
-       $response = Http::get(env('API_BASE_URL').'/agency/');
+        $response = Http::get(env('API_BASE_URL').'/agency/');
+        $agencies = $response->object();
 
-       $agencies = $response->object();
-       //dd($rentals);
-
-/**/
+        $response = Http::get(env('API_BASE_URL').'/vehicle/');
+        $vehicles = $response->object();
+        //dd($rentals);
+        //dd($vehicles);
+        /**/
         return view('formulaireReservation',[
-            'agencies'=>$agencies
+            'agencies'=>$agencies,
+            'vehicles'=>$vehicles
         ]);
     }
 
 }
+

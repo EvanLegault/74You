@@ -24,10 +24,10 @@ Route::post("/login",[\App\Http\Controllers\ConnexionController::class,'userLogi
 Route::get("/logout",[\App\Http\Controllers\ConnexionController::class,'logout'])->name('logout');
 
 Route::middleware(['connexion'])->group(function(){
-
+    Route::post("/rental/add",[\App\Http\Controllers\RentalController::class, 'store'])->name('rentalAdd');
     Route::get("/tableauDeBord",[\App\Http\Controllers\RentalController::class,'index'])->name('tableauDeBord');
     Route::get("/formulaireReservation",[\App\Http\Controllers\AgencyController::class,'index'])->name('formulaireReservation');
-    Route::get("/profil",[\App\Http\Controllers\profilController::class,'profil'])->name('profil');
+    Route::get("/profil",[\App\Http\Controllers\UsersController::class,'profil'])->name('profil');
 
 });
 

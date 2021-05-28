@@ -21,4 +21,19 @@ class RentalController extends Controller
             'rentals'=>$rentals
         ]);
     }
+    public function store(Request $req)
+    {
+        //dd($req->input());
+        $http = http::post(env('API_BASE_URL').'/rental/add',[
+            "vehicle_id" => $req->vehicle_id,
+            "startDate" => $req->startDate,
+            "endDate" => $req->endDate,
+            "kilometers" => $req->kilometers,
+            "startAgency_id" => $req->startAgency_id,
+            "endAgency_id" => $req->endAgency_id,
+            "customer_id" => $req->customer_id,
+        ]);
+        //dd($http);
+        //dd($req->input());
+    }
 }
